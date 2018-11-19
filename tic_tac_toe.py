@@ -5,6 +5,7 @@
 
  # dico_color = {element_grille : }
 
+
 global grille
 global end
 global comb_gagnantes
@@ -47,6 +48,7 @@ def occupation_grille_2():
 # fonction vérifiant que l'input donné par l'utilisateur est du type nombre
 
 def nombre_choisi():
+
     while True:
         val = input()
         try:
@@ -59,45 +61,52 @@ def nombre_choisi():
            print("\nCe n'est pas un nombre. Essaie encore")
 
 # Vérifie si la grille est gagnante pour un utilisateur
-    def verif_grille():
-        compt = 0
-        for a in comb_gagnantes:
-            if grille[a[0]] == grille[a[1]] == grille[a[2]] == "X":
-                print(" Joueur 1 gagne !\n")
-                print(" Félicitations !\n")
-                return True
+def verif_grille():
+    global end
+    global grille
+    global comb_gagnantes
+    compt = 0
+    for a in comb_gagnantes:
+        if grille[a[0]] == grille[a[1]] == grille[a[2]] == "X":
+            print(" Joueur 1 gagne !\n")
+            print(" Félicitations !\n")
+            return True
 
-            if grille[a[0]] == grille[a[1]] == grille[a[2]] == "O":
-                print("Joueur 2 gagne !\n")
-                print(" Félicitations !!!\n")
-                return True
-        for cellule in grille:
-             if cellule in "XO":
-                 compt += 1
-             if all(cellule in "XO" for cellule in grille):
-               print("Match Nul\n")
-               return True
+        if grille[a[0]] == grille[a[1]] == grille[a[2]] == "O":
+            print("Joueur 2 gagne !\n")
+            print(" Félicitations !!!\n")
+            return True
+    for cellule in grille:
+         if str(cellule) in "XO":
+             compt += 1
+         if all(str(cellule) in "XO" for cellule in grille):
+           print("Match Nul\n")
+           return True
 
 # Interaction entre utilisateurs
+"""if input(" Rejouer une partie (y/n)\n") == "y":
+    print()
+    tic_tac_toe()"""
 
-        while not end:
-            affiche_grille()
-            end = verif_grille()
-            if end == True:
-                break
-            print(" Joueur 1 choisit où placer une croix ")
-            occupation_grille_1()
-            print()
-            affiche_grille()
-            end = verif_grille()
-            if end == True:
-                break
+
+
+def tic_tac_toe():
+    end = False
+    while not end:
+        affiche_grille()
+        end = verif_grille()
+        if end == True:
+            break
+        print(" Joueur 1 choisit où placer une croix ")
+        occupation_grille_1()
+        print()
+        affiche_grille()
+        end = verif_grille()
+        if end == True:
+            break
         print("Joueur 2 choisit où placer un rond")
         occupation_grille_2()
         print()
 
-    if input(" Rejouer une partie (y/n)\n") == "y":
-        print()
-        tic_tac_toe()
 
 tic_tac_toe()
