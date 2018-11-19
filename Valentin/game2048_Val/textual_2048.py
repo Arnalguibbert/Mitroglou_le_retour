@@ -111,22 +111,43 @@ def transpose_grid(game_grid):
             ligne.append(game_grid[ordo][absi])
         res.append(ligne)
     return res
-        
+
+
+def move_grid_left(game_grid):
+    res= []
+
+    for ligne in game_grid:
+        res.append(move_row_left(ligne))
+    return res
+
+
+
+def move_grid_right(game_grid):
+    res= []
+    for ligne in game_grid:
+        res.append(move_row_left(ligne))
+    return res
+
+def move_grid_up(game_grid):
+    return transpose_grid(move_grid_left(transpose_grid(game_grid)))
+
+
+def move_grid_down(game_grid):
+    return transpose_grid(move_grid_right(transpose_grid(game_grid)))
+
 def move_grid(game_grid,direction):
-    res = []
-    size = game_grid
+
     if direction == "left":
-        for ligne in game_grid:
-            res.append(move_row_left(ligne))
-        return res
+        return move_grid_left(game_grid)
+
     if direction == "right":
-        for ligne in game_grid:
-            res.append(move_row_right(ligne))
-        return res
+        return move_grid_right(game_grid)
+
     if direction == "up":
-        return transpose_grid(move_grid(transpose_grid(game_grid),"left"))
+        return move_grid_up(game_grid)
+
     if direction == "down":
-        return transpose_grid(move_grid(transpose_grid(game_grid),"right"))
+        return move_grid_down(game_grid)
 
 
 
@@ -141,5 +162,3 @@ def move_grid(game_grid,direction):
 
 
 
-
-        

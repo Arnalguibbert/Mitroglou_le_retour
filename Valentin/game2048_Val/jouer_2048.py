@@ -81,7 +81,7 @@ def game_play():
         move_bool = move_possible(game_grid)
         direction_et_position = ask_and_read_direction()
         while not move_bool[direction_et_position[1]]:#mouvement impossible !
-            print("mouvement inmpossible !")
+            print("mouvement impossible !")
             direction_et_position = ask_and_read_direction()
         direction = direction_et_position[0]
         print()
@@ -98,7 +98,7 @@ def game_play():
     else:
         print('PERDU')    
 
-
+game_play()
     
 def game_play_tkinter():
     #réalise le jeu avec l'interface graphique

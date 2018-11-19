@@ -1,7 +1,7 @@
 from tkinter import *
-from grid import *
-from move import *
-from textual_2048 import *
+
+from game2048 import *
+
 from random import *
 import time
 SIZE = 1000
@@ -37,7 +37,7 @@ class GameGrid(Frame):
         self.master.bind("<Key>", self.key_down)
 
         #self.gamelogic = gamelogic
-        self.commands = {   KEY_UP: move_line_top, KEY_DOWN: move_line_bottom, KEY_LEFT: move_row_left, KEY_RIGHT: move_row_right
+        self.commands = {   KEY_UP: move_grid_up, KEY_DOWN: move_grid_down, KEY_LEFT: move_grid_left, KEY_RIGHT: move_grid_right
                             }
 
         self.grid_cells = []
