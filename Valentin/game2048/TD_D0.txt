@@ -1,0 +1,5 @@
+Fonctionnalités:
+
+L'algorithme fait jouer le joueur au jeu 2048 en proposant au joueur de choisir la taille de sa grille, et son thème de jeu (on a 3 thèmes différents). Les instructions de jeu sont expliquées au joueur.
+L'algorithme propose un affichage adaptatif qui s'adapte en fonction de la taille des cases
+On peut aussi faire jouer l'ordinateur (jeu aléatoire).
