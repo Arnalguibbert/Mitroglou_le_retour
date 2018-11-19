@@ -1,6 +1,9 @@
 from tkinter import *
 
-from game2048 import *
+from game2048.textual_2048 import *
+from game2048.grid import *
+from game2048.move import *
+
 
 from random import *
 import time
@@ -37,7 +40,7 @@ class GameGrid(Frame):
         self.master.bind("<Key>", self.key_down)
 
         #self.gamelogic = gamelogic
-        self.commands = {   KEY_UP: move_grid_up, KEY_DOWN: move_grid_down, KEY_LEFT: move_grid_left, KEY_RIGHT: move_grid_right
+        self.commands = {   KEY_UP: move_top, KEY_DOWN: move_bottom, KEY_LEFT: move_left, KEY_RIGHT: move_right
                             }
 
         self.grid_cells = []
@@ -83,8 +86,7 @@ class GameGrid(Frame):
 
     def key_down(self, event):
         key = repr(event.char)
-        print(event.char)
-        print(key)
+
         move_correspondance = {"'z'":'h',"'q'":'g',"'s'":'b',"'d'":'d'}
         print(self.matrix)
         print(move_possible(self.matrix))

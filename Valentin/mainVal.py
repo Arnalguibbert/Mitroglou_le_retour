@@ -1,4 +1,8 @@
-from game2048 import *
+from game2048_Val.grid_2048 import *
+from game2048_Val.display_grid_2048 import *
+from game2048_Val.textual_2048 import *
+
+
 from tkinter import *
 
 
@@ -17,13 +21,30 @@ CELL_COLOR_DICT = { 2:"#776e65", 4:"#776e65", 8:"#f9f6f2", 16:"#f9f6f2", \
 FONT = ("Verdana", 40, "bold")
 
 
-KEY_UP_ALT = "\'\\uf700\'"
-KEY_DOWN_ALT = "\'\\uf701\'"
-KEY_LEFT_ALT = "<Left>"
-KEY_RIGHT_ALT = "\'\\uf703\'"
-
 KEY_UP = "'z'"
 KEY_DOWN = "'s'"
 KEY_LEFT = "'q'"
 KEY_RIGHT = "'d'"
+
+
+
+"""grid_actual = init_grid(GRID_LEN)
+
+init_interface(grid_actual)"""
+
+
+
+root = Tk()
+
+def callback(event):
+    print("clicked at", event.x, event.y)
+
+frame = Frame(root, width=100, height=100)
+frame.bind("<Button-1>", callback)
+frame.pack()
+
+root.mainloop()
+
+
+
 

@@ -78,7 +78,7 @@ def grid_add_new_tile(game_grid):
 
 
 
-def init_game(taille):
+def init_grid(taille):
     game_grid = create_grid(taille)
     game_grid = grid_add_new_tile(game_grid)
     game_grid = grid_add_new_tile(game_grid)

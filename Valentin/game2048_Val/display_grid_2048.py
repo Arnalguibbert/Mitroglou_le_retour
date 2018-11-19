@@ -4,7 +4,7 @@ Created on Wed Nov 14 16:42:57 2018
 
 @author: Valentin
 """
-from grid_2048 import *
+from C:\Users\nilsf\Documents\programmation\CS\CODINGWEEK\Mitroglou_le_retour\Valentin\game2048_Val\grid_2048.py import *
 
 
 def long_value_with_theme(game_grid,theme):

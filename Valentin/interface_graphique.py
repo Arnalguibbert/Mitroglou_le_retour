@@ -1,5 +1,7 @@
 from tkinter import *
-from Valentin import *
+
+from game2048 import *
+
 from random import *
 import time
 SIZE = 1000

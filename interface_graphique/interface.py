@@ -23,7 +23,8 @@ def create_fenetre_jeu():
     windows.title('Game Interface')
     return windows
 
-def comand(event):
+def command(event):
+
     touche=event.keysym
     L=dc.key()
     for i in L:

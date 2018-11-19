@@ -3,11 +3,11 @@ from game2048.move import *
 
 def test_move_row_left():
 
-    assert move_row_left([[' ', 2, ' ', 2]]) == [[4, ' ', ' ', ' ']]
-    assert move_row_left([[4, 2, 16, 2]]) == [[4, 2, 16, 2]]
+    assert move_left([[' ', 2, ' ', 2]]) == [[4, ' ', ' ', ' ']]
+    assert move_left([[4, 2, 16, 2]]) == [[4, 2, 16, 2]]
 
 def test_move_row_right():
-        assert move_row_right([[4,2, 2, 8]]) == [[' ', 4, 4, 8]]
+        assert move_right([[4, 2, 2, 8]]) == [[' ', 4, 4, 8]]
 
 def test_move_grid():
     assert move_grid([[2,' ',' ',2], [4, 4, ' ', ' '], [8, ' ', 8, ' '], [' ', 2, 2, ' ']],"g") == [[4,' ',' ',' '], [8, ' ', ' ', ' '], [16, ' ', ' ', ' '], [4, ' ', ' ', ' ']]
