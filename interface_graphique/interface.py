@@ -11,7 +11,7 @@ def creation_choice_windows():
     Label(choice,text="2048 \nconnect 4").pack()
     return windows
 
-def creation_grid(GRID_LEN, color_dico, windows, grid_game, GRID_PADDLE, SIZE):
+def creation_grid(grid_game, windows, color_dico, GRID_LEN,SIZE):
     for i in range(GRID_LEN):
         for j in range(GRID_LEN):
             Backroundcase=color_dico[grid_game[i][j]]
@@ -26,8 +26,13 @@ def create_fenetre_jeu():
 def command(event):
 
     touche=event.keysym
-    L=dc.key()
-    for i in L:
-        if touche == i:
-            grid_game=dc[i](grid_init)
-            creation_grid(GRID_LEN, color_dico, windows, grid_game, GRID_PADDLE, SIZE)
+    if touche in dico_command:
+        grid_game=dico_command[touche](grid_game)
+        creation_grid(grid_game, windows, color_dico, GRID_LEN,SIZE)
+    if is_game_over(grid_game)==True:
+        cell=Frame(F,bg='yellow',width=SIZE/GRID_LEN,height=SIZE/GRID_LEN).grid(row=0,column=0,padx=10,pady=10)
+        Label(cell,text='YOU',bg='blue').grid(row=0,column=0)
+        cell=Frame(F,bg='yellow',width=SIZE/GRID_LEN,height=SIZE/GRID_LEN).grid(row=0,column=1,padx=10,pady=10)
+        Label(cell,text='LOSE',bg='blue').grid(row=0,column=1)
+
+
