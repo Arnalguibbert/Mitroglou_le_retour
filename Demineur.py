@@ -210,11 +210,8 @@ def modif_coordonées(c, M):
 
 
 
-def jouer_un_coup(c,M):
+def jouer_coup(c,M):
     return modif_coordonées(c,M)
-
-
-
 
 
 #InterfaceGraphique
@@ -226,3 +223,4 @@ BACKGROUND_COLOR_CASE={0:["#000000",''],9:["#000000",''],100:["#9cff00",'0'],101
 
 
 
+DICO_COMMAND={&:jouer_un_coup([0,0],M),é:jouer_un_coup([0,1],M),"":jouer_un_coup([0,2],M),'':jouer_un_coup([0,3],M),a:jouer_un_coup([1,0],M),z:jouer_un_coup([1,1],M),e:jouer_un_coup([1,2],M),r:jouer_un_coup([1,3],M),q:jouer_un_coup([2,0],M),s:jouer_un_coup([2,1],M),d:jouer_un_coup([2,2],M),f:jouer_un_coup([2,3],M),w:jouer_un_coup([3,0],M),x:jouer_un_coup([3,1],M),c:jouer_un_coup([3,2],M),v:jouer_un_coup([3,3],M)}
