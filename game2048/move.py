@@ -1,6 +1,9 @@
 import numpy as np
 import copy as copy
-def move_row_left(grid):
+from game2048.grid import *
+
+
+def move_left(grid):
     length_grid = len(grid)
     flag = [[0 for i in range(len(grid[0]))] for j in range(len(grid))]
 
@@ -24,23 +27,23 @@ def move_row_left(grid):
 
     return grid
 
-def move_row_right(grid):
+def move_right(grid):
     length_grid = len(grid)
     for lines in grid:      #lines
         length_grid = len(lines)
         lines.reverse()
-    grid2 = move_row_left(grid)
+    grid2 = move_left(grid)
     for lines in grid2:      #lines
         length_grid = len(lines)
         lines.reverse()
     return grid2
 
-def move_line_bottom(grid):
+def move_bottom(grid):
     grid_transposed = [[0 for i in range(len(grid))] for i in range(len(grid))]
     for i in range(len(grid)):
         for j in range(len(grid)):
             grid_transposed[i][j] = grid[j][i]
-    grid_temp = move_row_right(grid_transposed)
+    grid_temp = move_right(grid_transposed)
 
     grid_final = [[0 for i in range(len(grid))] for i in range(len(grid))]
     for i in range(len(grid)):
@@ -50,12 +53,12 @@ def move_line_bottom(grid):
     return grid_final
 
 
-def move_line_top(grid):
+def move_top(grid):
     grid_transposed = [[0 for i in range(len(grid))] for i in range(len(grid))]
     for i in range(len(grid)):
         for j in range(len(grid)):
             grid_transposed[i][j] = grid[j][i]
-    grid_temp = move_row_left(grid_transposed)
+    grid_temp = move_left(grid_transposed)
 
     grid_final = [[0 for i in range(len(grid))] for i in range(len(grid))]
     for i in range(len(grid)):
@@ -68,13 +71,13 @@ def move_line_top(grid):
 def move_grid(grid, d):
     grid2 = []
     if d == 'g':
-        grid2 = move_row_left(grid)
+        grid2 = move_left(grid)
     if d == 'd':
-        grid2 = move_row_right(grid)
+        grid2 = move_right(grid)
     if d == 'h':
-        grid2 = move_line_top(grid)
+        grid2 = move_top(grid)
     if d == 'b':
-        grid2 = move_line_bottom(grid)
+        grid2 = move_bottom(grid)
     return grid2
 
 
@@ -86,7 +89,7 @@ def is_grid_full(grid):
                 is_it = False
     return is_it
 
-def move_possible(grid):
+"""def move_possible(grid):
     grid_ok = copy.deepcopy(grid)
     grid_for_test = copy.deepcopy(grid)
     is_possible = {'g':False,'d':False,'h':False,'b':False}
@@ -97,7 +100,7 @@ def move_possible(grid):
         print(grid_for_test)
         if move_grid(grid_ok, move) != grid_for_test:
             is_possible[move] = True
-    return is_possible
+    return is_possible"""
 
 
 def is_game_over(grid):
@@ -108,4 +111,27 @@ def is_game_over(grid):
 
 #print(move_possible([[32, 8, 8, 8], [16, 4, ' ', ' '], [8, ' ', ' ', ' '], [4, ' ', ' ', ' ']]))
 #print(move_line_top([[32, 8, 8, 8], [16, 4, ' ', ' '], [8, ' ', ' ', ' '], [4, ' ', ' ', ' ']]))
-print(move_possible([[32, 8, 8, 8], [16, 4, ' ', ' '], [8, ' ', ' ', ' '], [4, ' ', ' ', ' ']]))
+#print(move_possible([[16, 8, 8, 8], [8, 2, 4, 4], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ']]))
+
+
+
+
+def move_possible(grid):
+    grid_changed = copy.deepcopy(grid)
+    grid_reference = copy. deepcopy(grid)
+
+    is_possible = {'g':False,'d':False,'h':False,'b':False}
+    is_possible['h'] = move_top(grid_changed) != grid_reference
+    grid_changed = copy.deepcopy(grid)
+
+    is_possible['d'] = move_right(grid_changed) != grid_reference
+    grid_changed = copy.deepcopy(grid)
+
+    is_possible['g'] = move_left(grid_changed) != grid_reference
+    grid_changed = copy.deepcopy(grid)
+
+    is_possible['b'] = move_bottom(grid_changed) != grid_reference
+    grid_changed = copy.deepcopy(grid)
+
+    return is_possible
+print(move_possible([[32, 8, 4, ' '], [2, 8, 4, ' '], [16, 2, 8, ' '], [16, 4, 2, 4]]))
