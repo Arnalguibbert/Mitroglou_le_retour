@@ -8,3 +8,6 @@ Contributors
 - Valentin Goldité
 
 - Idrissa Diarra
+
+- Jacques Rouge
+
