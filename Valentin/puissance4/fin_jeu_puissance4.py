@@ -16,10 +16,11 @@ def is_game_over(game_grid): #le jeu est over si la grille est pleine
 
 def allignement_ligne(game_grid):
     """ vérifie si il y a 4 cases identiques sur une ligne et si c'est le cas, renvoie le num du vainqueur (" " si pas de vainqueur)"""
-    for ligne in game_grid:
+    size = len(game_grid)
+    for couche in range(0,size):
         ligne_string = ""
-        for case in ligne:
-            ligne_string += case  # on transforme la liste en string en concaténant les caractères de la liste de caractère
+        for position in range(0,size):
+            ligne_string += game_grid[couche][position]  # on transforme la liste en string en concaténant les caractères de la liste de caractère
         if "0000" in ligne_string: 
             return "0"
         elif "1111" in ligne_string:
@@ -54,7 +55,7 @@ def allignement_diago(game_grid):
             y += 1
             x += 1
         if "0000" in diago_string: 
-            return "0"
+            return 0
         elif "1111" in diago_string:
             return "1"
         
