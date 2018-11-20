@@ -1,13 +1,13 @@
 from game2048.grid import *
 from tkinter import *
 from interface_graphique.interface import *
-from game2048.move import *
+import game2048.move as mv
 
 GRID_LEN=4
-color_dico= {' ':"#9e948a",2:"#eee4da", 4:"#ede0c8", 8:"#f2b179", 16:"#f59563", \
-                            32:"#f67c5f", 64:"#f65e3b", 128:"#edcf72", 256:"#edcc61", \
+color_dico= {' ':["#9e948a",''],2:["#eee4da",'2'], 4:["#ede0c8",'4'], 8:["#f2b179",'8'],16:["#f59563",'16'], \
+                            32:["#f67c5f",'32'], 64:"#f65e3b", 128:"#edcf72", 256:"#edcc61", \
                             512:"#edc850", 1024:"#edc53f", 2048:"#edc22e" }
-dico_command={1:[move_top,"Up",[0,1]],2:[move_bottom,"Down",[2,1]],3:[move_right,"Right",[1,2]],4:[move_left,"Left",[1,0]]}
+dico_command={1:[mv.move_top,"Up",[0,1]],2:[mv.move_bottom,"Down",[2,1]],3:[mv.move_right,"Right",[1,2]],4:[mv.move_left,"Left",[1,0]]}
 GRID_PADDLE=5
 SIZE=500
 
