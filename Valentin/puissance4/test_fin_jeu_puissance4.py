@@ -9,7 +9,7 @@ from pytest import *
 from fin_jeu_puissance4 import *
 
 def test_is_game_won():
-    game_grid = init_grid(7)
+    game_grid = init_game(7)
     assert is_game_over(game_grid) == False
     game_grid = update_grid(game_grid,3,"0")
     game_grid = update_grid(game_grid,3,"1")

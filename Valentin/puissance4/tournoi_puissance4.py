@@ -54,7 +54,7 @@ def duel(machine_1,machine_2):
     #prend en argument un string entre "1" et "8"
     print("Duel",machine_1,"vs",machine_2,":")
     size = 7
-    game_grid = init_grid(size)
+    game_grid = init_game(size)
     print(game_grid)
     print()
     num_joueur = str(random.randrange(0,2)) #numéro du joueur actif (au hasard au début)
@@ -65,7 +65,7 @@ def duel(machine_1,machine_2):
             nom_IA = machine_2
         position = get_globale_position(nom_IA,game_grid,num_joueur)
         game_grid = update_grid(game_grid,position,num_joueur)
-        time.sleep(0.3)
+        #time.sleep(0.3)
         print(game_grid)
         print()
         num_joueur = str(1-int(num_joueur)) #on change le joueur actif
@@ -115,9 +115,9 @@ def tournoi_puissance4():
     while score_duel == 0:
         score_duel += duel(finalistes[0],finalistes[1])
     if score_duel > 0:
-        print("Le gagnant de ce tournoi est",finalistes[0])
+        print("Le gagnant de ce tournoi est le numéro",finalistes[0])
     else:
-        print("Le gagnant de ce tournoi est",finalistes[1],"!")
+        print("Le gagnant de ce tournoi est le numéro",finalistes[1],"!")
         print("Bravo !")
     
             
@@ -126,7 +126,7 @@ def duel_vs_machine():
     print("Let's go !")
     size = 7
     nom_IA = "3"
-    game_grid = init_grid(size)
+    game_grid = init_game(size)
     print(game_grid)
     print()
     num_joueur = str(random.randrange(0,2)) #numéro du joueur actif (au hasard au début)
