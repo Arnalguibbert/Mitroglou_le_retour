@@ -10,7 +10,6 @@ def launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is
     windows_game.mainloop()
     windows_command.mainloop()
 
-
 def input_of_the_user():
     windows=Tk()
     Choose=Label(windows,text='Enter the game name')
