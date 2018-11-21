@@ -19,7 +19,7 @@ from functools import partial
 import random as rd
 
 def random_play():
-    game_grid = init_game(3)
+    game_grid = init_grid(4)
     theme = THEMES["0"]
     print(grid_to_string_with_size_and_theme(game_grid,theme))
     while not is_game_over(game_grid) and not grid_gagnant(game_grid):
@@ -61,13 +61,13 @@ def ask_and_read_grid_theme():
 def ask_and_read_direction():
     """Renvoie la direction et la position dans la liste des directions"""
     command = read_player_command()
-    if command == "g":
+    if command == "q":
         return "left",0
     elif command == "d":
         return "right",1
-    elif command == "h":
+    elif command == "z":
         return "up",2
-    elif command == "b":
+    elif command == "s":
         return "down",3
     else:
         return None
@@ -75,7 +75,7 @@ def ask_and_read_direction():
 def game_play():
     size = ask_and_read_grid_size()
     theme = ask_and_read_grid_theme()
-    game_grid = init_game(size)
+    game_grid = init_grid(size)
     print(grid_to_string_with_size_and_theme(game_grid,theme))
     while not is_game_over(game_grid) and not grid_gagnant(game_grid):
         move_bool = move_possible(game_grid)
@@ -98,16 +98,8 @@ def game_play():
     else:
         print('PERDU')    
 
-game_play()
+
     
-def game_play_tkinter():
-    #réalise le jeu avec l'interface graphique
-    fenetre = Tk()
-    # entrée
-    value = StringVar() 
-    value.set("texte par défaut")
-    entree = Entry(fenetre, textvariable = text, width=30)
-    entree.pack()
 
 
 
