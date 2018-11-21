@@ -293,7 +293,7 @@ def move_possible(grid, text_move_fonction):
 
 
 def is_game_won(grid):
-    return True
+    return False
 #-------------------INFO NECESSARY-----------
 GRID_LEN=4
 color_dico= {' ':["#9e948a",''],2:["#eee4da",'2'], 4:["#ede0c8",'4'], 8:["#f2b179",'8'],16:["#f59563",'16'], \
@@ -303,4 +303,4 @@ dico_command={1:[complete_move_top,"Up",[0,1]],2:[complete_move_bottom,"Down",[2
 GRID_PADDLE=5
 SIZE=500
 def info_necessary():
-    return GRID_LEN, GRID_PADDLE, dico_command, color_dico,init_game, is_game_over, move_possible, False
+    return GRID_LEN, GRID_PADDLE, dico_command, color_dico, SIZE, init_game, is_game_over, move_possible, is_game_won

@@ -1,12 +1,12 @@
 from game2048.grid import *
 from tkinter import *
 from interface_graphique.interface import *
-from game.game_2048 import *
+#from game.game_2048 import *
 import time
 
 
 
-GRID_LEN, GRID_PADDLE, dico_command, color_dico,init_game, is_game_over, move_possible, is_game_won = info_necessary()
+#GRID_LEN, GRID_PADDLE, dico_command, color_dico,init_game, is_game_over, move_possible, is_game_won = info_necessary()
 
 """color_dico = {0: ["#000000", ''], 1: ["#9cff00", 'X'], 2: ["#ff9000", 'O']}
 dico_command = {1: [jouer_un_coup00, '', [0, 0]], 2: [jouer_un_coup01, '', [0, 1]], 3: [jouer_un_coup02, '', [0, 2]],
