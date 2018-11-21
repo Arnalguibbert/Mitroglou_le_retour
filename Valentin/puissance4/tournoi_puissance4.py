@@ -13,11 +13,23 @@ import IA_5
 import IA_6
 import IA_7
 import IA_8
-import jouer_puissance4 as play
-from jouer_puissance4 import *
+
+from grid_puissance4 import *
+from fin_jeu_puissance4 import *
 import time
 import random
 
+color_dico = {" ":['#8c8c88',"","rond"],"0":['#fcff00',"","rond"],"1":['#e70808',"","rond"]}
+
+SIZE = 200
+GAME_PADDLE = 4
+GRID_LEN = 7
+
+dico_command = {"0": [update_grid_0,"0",[0,0]], "1": [update_grid_1,"1",[1,0]], "2": [update_grid_2,"2",[2,0]], "3": [update_grid_3,"3",[3,0]], "4": [update_grid_4,"4",[4,0]], "5": [update_grid_5,"5",[5,0]], "6": [update_grid_6,"6",[6,0]]}
+
+
+def info_necessary():
+    return GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible,is_game_won
 
 def get_globale_position(nom_IA,game_grid,num_joueur):
     if nom_IA == "1":
