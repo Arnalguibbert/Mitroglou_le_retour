@@ -5,6 +5,7 @@ def move_possible():
 
 def init_game(n=3):
     M = remplissage_taille(n)
+    return M
 
 
 def move_possible():
