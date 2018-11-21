@@ -303,4 +303,4 @@ dico_command={1:[complete_move_top,"Up",[0,1]],2:[complete_move_bottom,"Down",[2
 GRID_PADDLE=5
 SIZE=500
 def info_necessary():
-    return GRID_LEN, GRID_PADDLE, dico_command, color_dico,init_game, is_game_over, move_possible, is_game_over, is_game_won
+    return GRID_LEN, GRID_PADDLE, dico_command, color_dico, SIZE, init_game, is_game_over, move_possible, is_game_won
