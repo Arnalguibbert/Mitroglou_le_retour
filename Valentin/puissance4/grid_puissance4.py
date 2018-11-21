@@ -20,8 +20,11 @@ def init_grid(size): # la grille sera carrée
     return game_grid
 
 
-def full_column(game_grid,position):
-    return game_grid[0][position] != " "
+
+def move_possible(game_grid,str_position):
+    # Dit si la colonne à la position donnée peut acceuillir un jeton. La commande est une string
+    return game_grid[0][int(str_position)] == " "
+
 
 def update_grid(game_grid,position,num_joueur):
     res = copy.deepcopy(game_grid)
@@ -35,11 +38,6 @@ def update_grid(game_grid,position,num_joueur):
             res[ligne-1][position] = num_joueur
             return res
 
-
-def move_possible(game_grid):
-    """ fais la liste 'res' de booléens tels que res[i] dit si on peut mettre un jeton à la position i """
-    size = len(game_grid)
-    return [not(full_column(game_grid,position)) for position in range(0,size)]
 
 
 
@@ -72,7 +70,7 @@ def update_grid_6(game_grid,num_joueur):
 
   
 
-dico_command = {"0": update_grid_0, "1": update_grid_1, "2": update_grid_2, "3": update_grid_3, "4": update_grid_4, "5": update_grid_5, "6": update_grid_6}
+dico_command = {"0": [update_grid_0,"0",[0,0]], "1": [update_grid_1,"1",[1,0]], "2": [update_grid_2,"2",[2,0]], "3": [update_grid_3,"3",[3,0]], "4": [update_grid_4,"4",[4,0]], "5": [update_grid_5,"5",[5,0]], "6": [update_grid_6,"6",[6,0]]}
 
 
 

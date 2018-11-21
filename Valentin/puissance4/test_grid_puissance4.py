@@ -31,7 +31,7 @@ def test_update_grid():
     [' ', ' ', '0', '0', ' ', ' ', ' ']]
 
 def test_move_possible():
-    assert  move_possible(init_grid(7)) == [True]*7
+    assert  move_possible(init_grid(7),"2") == True
     game_grid = update_grid(init_grid(7),0,"0")
     game_grid = update_grid(game_grid,0,"1")
     game_grid = update_grid(game_grid,0,"0")
@@ -39,7 +39,7 @@ def test_move_possible():
     game_grid = update_grid(game_grid,0,"0")
     game_grid = update_grid(game_grid,0,"1")
     game_grid = update_grid(game_grid,0,"0")
-    assert move_possible(game_grid) == [False]+[True]*6
+    assert move_possible(game_grid,"0") == False
 
 
 
