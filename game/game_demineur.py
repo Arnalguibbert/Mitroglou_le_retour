@@ -9,7 +9,7 @@ def jouer_un_coup(c,M):
 def is_game_over(M):
     return M[0][0] == 1998
 
-def move_possible():
+def move_possible(M,c):
     return True
 
 def init_game(n=4):
@@ -294,7 +294,7 @@ SIZE = 500
 
 
 def info_necessary():
-    return GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible
+    return GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible,is_game_won
 
 
 

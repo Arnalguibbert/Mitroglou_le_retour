@@ -1,6 +1,6 @@
 #FONCTIONS VITALES:
 
-def move_possible():
+def move_possible(M,r):
     return True
 
 def init_game(n=3):
@@ -9,7 +9,7 @@ def init_game(n=3):
 
 
 def jouer_un_coup(a,b,M):
-    return(tictac_IA_forte(a,b,M))
+    return(tictac_IA_nulle(a,b,M))
 
 
 def is_game_over(M):
