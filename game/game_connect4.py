@@ -169,7 +169,6 @@ def duel_vs_machine():
     """joue contre terminator !"""
     print("Let's go !")
     size = 7
-    nom_IA = "3"
     game_grid = init_game(size)
     print(game_grid)
     print()
@@ -205,32 +204,64 @@ def duel_vs_machine():
     return
 
 
-def update_grid_0(game_grid,num_joueur):
-    return update_grid(game_grid,0,num_joueur)
+def update_grid_0(game_grid):
+    game_grid = update_grid(game_grid,0,"0")
+    if is_game_over(game_grid) or is_game_won(game_grid):
+        return game_grid
+    position = get_position(game_grid,"1")
+    game_grid = update_grid(game_grid,position,"1")
+    return game_grid
     
-
-def update_grid_1(game_grid,num_joueur):
-    return update_grid(game_grid,1,num_joueur)
+def update_grid_1(game_grid):
+    game_grid = update_grid(game_grid,1,"0")
+    if is_game_over(game_grid) or is_game_won(game_grid):
+        return game_grid
+    position = get_position(game_grid,"1")
+    game_grid = update_grid(game_grid,position,"1")
+    return game_grid
+    
+def update_grid_2(game_grid):
+    game_grid = update_grid(game_grid,2,"0")
+    if is_game_over(game_grid) or is_game_won(game_grid):
+        return game_grid
+    position = get_position(game_grid,"1")
+    game_grid = update_grid(game_grid,position,"1")
+    return game_grid
   
     
-def update_grid_2(game_grid,num_joueur):
-    return update_grid(game_grid,2,num_joueur)
+def update_grid_3(game_grid):
+    game_grid = update_grid(game_grid,3,"0")
+    if is_game_over(game_grid) or is_game_won(game_grid):
+        return game_grid
+    position = get_position(game_grid,"1")
+    game_grid = update_grid(game_grid,position,"1")
+    return game_grid
+    
+
+def update_grid_4(game_grid):
+    game_grid = update_grid(game_grid,4,"0")
+    if is_game_over(game_grid) or is_game_won(game_grid):
+        return game_grid
+    position = get_position(game_grid,"1")
+    game_grid = update_grid(game_grid,position,"1")
+    return game_grid
   
     
-def update_grid_3(game_grid,num_joueur):
-    return update_grid(game_grid,3,num_joueur)
-    
+def update_grid_5(game_grid):
+    game_grid = update_grid(game_grid,5,"0")
+    if is_game_over(game_grid) or is_game_won(game_grid):
+        return game_grid
+    position = get_position(game_grid,"1")
+    game_grid = update_grid(game_grid,position,"1")
+    return game_grid
 
-def update_grid_4(game_grid,num_joueur):
-    return update_grid(game_grid,4,num_joueur)
-  
-    
-def update_grid_5(game_grid,num_joueur):
-    return update_grid(game_grid,5,num_joueur)
-
-
-def update_grid_6(game_grid,num_joueur):
-    return update_grid(game_grid,6,num_joueur)
+def update_grid_6(game_grid):
+    game_grid = update_grid(game_grid,6,"0")
+    if is_game_over(game_grid) or is_game_won(game_grid):
+        return game_grid
+    position = get_position(game_grid,"1")
+    game_grid = update_grid(game_grid,position,"1")
+    return game_grid
 
 
 color_dico = {" ":['#8c8c88',"","rond"],"0":['#fcff00',"","rond"],"1":['#e70808',"","rond"]}
