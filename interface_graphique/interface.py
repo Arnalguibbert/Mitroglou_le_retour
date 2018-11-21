@@ -1,14 +1,14 @@
 from tkinter import *
 import time
-
-def launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible):
+from game.game_2048 import *
+"""def launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible):
     windows_game=Tk()
     windows_command=Tk()
     game_grid=init_game(GRID_LEN)
     creation_grid(game_grid, windows_game, color_dico, GRID_LEN,SIZE,GRID_PADDLE)
     all_button(GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico, dico_command,windows_command,is_game_over,move_possible)
     windows_game.mainloop()
-    windows_command.mainloop()
+    windows_command.mainloop()"""
 
 def input_of_the_user():
     windows=Tk()
@@ -31,18 +31,27 @@ def creation_grid(grid_game, windows, color_dico, GRID_LEN,SIZE,GRID_PADDLE):
             Label(cell,text=Backroundcase[1],bg=Backroundcase[0]).grid(row=i,column=j)# text in the cell
 
 
-def button_action(order,GRID_LEN, windows, game_grid, SIZE,GRID_PADDLE,color_dico,is_game_over,move_possible,windows_game,dico_command,windows_command,is_game_won): # action of bouton
-        print(game_grid)
-        game_grid=order[0](game_grid)# modify the grid in relation to the order
-        time.sleep(0.5)
-        print(game_grid)
-        if is_game_won(game_grid)==True:
+
+def button_action(order,GRID_LEN, windows, game_grid, SIZE,GRID_PADDLE,color_dico,is_game_over,move_possible,windows_game,dico_command,windows_command): # action of bouton
+
+
+        if not is_game_over(game_grid):
+            str_order = str(order[0].__name__)       #here I'm just getting the name of the function
+            print(str_order)
+
+
+            if move_possible(game_grid, str_order):
+                game_grid=order[0](game_grid)# modify the grid in relation to the order
+                creation_grid(game_grid, windows, color_dico, GRID_LEN,SIZE,GRID_PADDLE)# modify the graphique interface
+                print(game_grid)
+            else:
+                print('move not possible')
+        elif is_game_won(game_grid):
             cell=Frame(windows, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=0, padx=GRID_PADDLE, pady=GRID_PADDLE)
             Label(cell,text='YOU',bg='blue').grid(row=0,column=0)
             cell2=Frame(windows, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=1, padx=GRID_PADDLE, pady=GRID_PADDLE)
             Label(cell2,text='LOSE',bg='blue').grid(row=0,column=1)
-        elif is_game_over(game_grid)==False:
-            creation_grid(game_grid, windows, color_dico, GRID_LEN,SIZE,GRID_PADDLE)# modify the graphique interface
+
         else:
             cell=Frame(windows, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=0, padx=GRID_PADDLE, pady=GRID_PADDLE)
             Label(cell,text='YOU',bg='blue').grid(row=0,column=0)
@@ -52,7 +61,7 @@ def button_action(order,GRID_LEN, windows, game_grid, SIZE,GRID_PADDLE,color_dic
 
 
 def button(order,GRID_LEN, windows_game, game_grid, SIZE,GRID_PADDLE,color_dico,windows_command,is_game_over,move_possible,dico_command):# implementation of a button
-    Boutton=Button(windows_command,text=order[1],bg='#eee4da"',width=5,height=2,command=lambda order=order,GRID_LEN=GRID_LEN,windows=windows_game, game_grid=game_grid, SIZE=SIZE,GRID_PADDLE=GRID_PADDLE,color_dico=color_dico,is_game_over=is_game_over,move_possible=move_possible,windows_command=windows_command,dico_command=dico_command:button_action(order,GRID_LEN, windows, game_grid, SIZE,GRID_PADDLE,color_dico,is_game_over,move_possible,windows_game,dico_command,windows_command)).grid(row=order[2][0],column=order[2][1],padx=3,pady=3)
+    Boutton=Button(windows_command,text=order[1],bg='#eee4da',width=5,height=2,command=lambda order=order,GRID_LEN=GRID_LEN,windows=windows_game, game_grid=game_grid, SIZE=SIZE,GRID_PADDLE=GRID_PADDLE,color_dico=color_dico,is_game_over=is_game_over,move_possible=move_possible,windows_command=windows_command,dico_command=dico_command:button_action(order,GRID_LEN, windows, game_grid, SIZE,GRID_PADDLE,color_dico,is_game_over,move_possible,windows_game,dico_command,windows_command)).grid(row=order[2][0],column=order[2][1],padx=3,pady=3)
 
 
 def all_button(GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico, dico_command,windows_command,is_game_over,move_possible):# implementation of all of the buttons

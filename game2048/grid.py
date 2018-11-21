@@ -17,7 +17,7 @@ def create_grid(n):
 
 def grid_add_new_tile_at_position(game_grid, x, y):
     choice = rd.random()
-    if choice <= 0.1:
+    if choice <= 0.9:
         tile = 2
     else:
         tile = 4
@@ -66,11 +66,11 @@ def grid_add_new_tile(grid):
 
 def init_game(n):
     grid = create_grid(n)
-    print("created grid", grid)
+    #print("created grid", grid)
     grid = grid_add_new_tile(grid)
-    print("first tile", grid)
+    #print("first tile", grid)
     grid = grid_add_new_tile(grid)
-    print("second tile", grid)
+    #print("second tile", grid)
     return grid
 
 
@@ -87,7 +87,7 @@ def grid_to_string(grid, n, theme='0'):
     print(grid)
     grid2 = copy.deepcopy(grid)
     tiles = get_all_tiles(grid2, 0)
-    print('tiles',tiles)
+    #print('tiles',tiles)
     printed_grid = """"""
     length_here = length(grid2, theme)
     for i in range(n):
@@ -107,4 +107,4 @@ def grid_to_string(grid, n, theme='0'):
 #grid_to_string([[16, 4, 8, 2], [2, 4, 2, 128], [4, 512, 32, 64], [1024, 2048, 512, 2]], 4, theme='2')
 #print(create_grid(2))
 #print(grid_add_new_tile_at_position([[' ', ' '], [' ', 4]],1,0))
-print(init_game(4))
+#print(init_game(4))

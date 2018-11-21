@@ -292,15 +292,15 @@ def move_possible(grid, text_move_fonction):
         return dict_possible['d']
 
 
-
-
+def is_game_won(grid):
+    return True
 #-------------------INFO NECESSARY-----------
 GRID_LEN=4
 color_dico= {' ':["#9e948a",''],2:["#eee4da",'2'], 4:["#ede0c8",'4'], 8:["#f2b179",'8'],16:["#f59563",'16'], \
                             32:["#f67c5f",'32'], 64:["#f65e3b",'64'], 128:["#edcf72",'128'], 256:["#edcc61",'256'], \
                             512:["#edc850","512"], 1024:["#edc53f",'1024'], 2048:["#edc22e",'2048'] }
-dico_command={1:[mv.complete_move_top,"Up",[0,1]],2:[mv.complete_move_bottom,"Down",[2,1]],3:[mv.complete_move_right,"Right",[1,2]],4:[mv.complete_move_left,"Left",[1,0]]}
+dico_command={1:[complete_move_top,"Up",[0,1]],2:[complete_move_bottom,"Down",[2,1]],3:[complete_move_right,"Right",[1,2]],4:[complete_move_left,"Left",[1,0]]}
 GRID_PADDLE=5
 SIZE=500
 def info_necessary():
-    return GRID_LEN, GRID_PADDLE, dico_command, color_dico,init_game, is_game_over, move_possible, is_game_won
+    return GRID_LEN, GRID_PADDLE, dico_command, color_dico,init_game, is_game_over, move_possible, False
