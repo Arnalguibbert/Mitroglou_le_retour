@@ -2,6 +2,7 @@ from game2048.grid import *
 from tkinter import *
 from interface_graphique.interface import *
 import game2048.move as mv
+import time
 
 GRID_LEN=4
 color_dico= {' ':["#9e948a",''],2:["#eee4da",'2'], 4:["#ede0c8",'4'], 8:["#f2b179",'8'],16:["#f59563",'16'], \
@@ -16,7 +17,10 @@ def launch_a_game():
     windows_command=Tk()
     game_grid=init_game(GRID_LEN)
     creation_grid(game_grid, windows_game, color_dico, GRID_LEN,SIZE,GRID_PADDLE)
-    all_button(GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico, dico_command,windows_command)
+    all_button(GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico, dico_command,windows_command,mv.is_game_over,mv.move_possible)
     windows_game.mainloop()
     windows_command.mainloop()
 
+launch_a_game()
+
+print(mv.move_right([[2, 2, ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ']]))
