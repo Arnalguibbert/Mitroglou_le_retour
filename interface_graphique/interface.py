@@ -1,6 +1,6 @@
 from tkinter import *
 import time
-
+from game.game_2048 import *
 """def launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible):
     windows_game=Tk()
     windows_command=Tk()
@@ -9,7 +9,6 @@ import time
     all_button(GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico, dico_command,windows_command,is_game_over,move_possible)
     windows_game.mainloop()
     windows_command.mainloop()"""
-
 
 def input_of_the_user():
     windows=Tk()
@@ -32,6 +31,7 @@ def creation_grid(grid_game, windows, color_dico, GRID_LEN,SIZE,GRID_PADDLE):
             Label(cell,text=Backroundcase[1],bg=Backroundcase[0]).grid(row=i,column=j)# text in the cell
 
 
+
 def button_action(order,GRID_LEN, windows, game_grid, SIZE,GRID_PADDLE,color_dico,is_game_over,move_possible,windows_game,dico_command,windows_command): # action of bouton
 
 
@@ -46,6 +46,12 @@ def button_action(order,GRID_LEN, windows, game_grid, SIZE,GRID_PADDLE,color_dic
                 print(game_grid)
             else:
                 print('move not possible')
+        elif is_game_won(game_grid):
+            cell=Frame(windows, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=0, padx=GRID_PADDLE, pady=GRID_PADDLE)
+            Label(cell,text='YOU',bg='blue').grid(row=0,column=0)
+            cell2=Frame(windows, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=1, padx=GRID_PADDLE, pady=GRID_PADDLE)
+            Label(cell2,text='LOSE',bg='blue').grid(row=0,column=1)
+
         else:
             cell=Frame(windows, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=0, padx=GRID_PADDLE, pady=GRID_PADDLE)
             Label(cell,text='YOU',bg='blue').grid(row=0,column=0)
@@ -61,4 +67,3 @@ def button(order,GRID_LEN, windows_game, game_grid, SIZE,GRID_PADDLE,color_dico,
 def all_button(GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico, dico_command,windows_command,is_game_over,move_possible):# implementation of all of the buttons
     for i in dico_command:# define a button for each command
         button(dico_command[i], GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico,windows_command,is_game_over,move_possible,dico_command)
-

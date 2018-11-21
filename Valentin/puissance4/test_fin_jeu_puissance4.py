@@ -10,20 +10,19 @@ from fin_jeu_puissance4 import *
 
 def test_is_game_won():
     game_grid = init_grid(7)
-    assert is_game_over(game_grid) == False," "
+    assert is_game_over(game_grid) == False
     game_grid = update_grid(game_grid,3,"0")
     game_grid = update_grid(game_grid,3,"1")
     game_grid = update_grid(game_grid,3,"0")
     game_grid = update_grid(game_grid,3,"1")
     game_grid = update_grid(game_grid,2,"0")
     game_grid = update_grid(game_grid,1,"1")
-    assert is_game_won(game_grid)[0] == False
+    assert is_game_won(game_grid) == False
     game_grid_2 = game_grid.copy()
-    game_grid_2 = update_grid(game_grid,4,"0")
-    game_grid_2 = update_grid(game_grid,1,"1")
-    game_grid_2 = update_grid(game_grid,5,"0")
-    assert is_game_won(game_grid)[0] == True
-    assert is_game_won(game_grid)[1] == "0"
+    game_grid_2 = update_grid(game_grid_2,4,"0")
+    game_grid_2 = update_grid(game_grid_2,1,"1")
+    game_grid_2 = update_grid(game_grid_2,5,"0")
+    assert is_game_won(game_grid_2) == True
     game_grid = [[' ', ' ', ' ', ' ', ' ', ' ', ' '],
      [' ', ' ', ' ', ' ', ' ', ' ', ' '],
      [' ', ' ', ' ', ' ', ' ', ' ', ' '],
@@ -31,8 +30,7 @@ def test_is_game_won():
      [' ', ' ', ' ', '0', ' ', ' ', ' '],
      [' ', ' ', '1', '0', '1', ' ', ' '],
      [' ', ' ', '0', '0', '1', '1', ' ']]
-    assert is_game_won(game_grid)[0] == True,"0"
-    assert is_game_won(game_grid)[1] == "0"
+    assert is_game_won(game_grid) == True
     game_grid = [[' ', ' ', ' ', ' ', ' ', ' ', ' '],
      [' ', ' ', ' ', ' ', ' ', ' ', ' '],
      [' ', ' ', ' ', ' ', ' ', ' ', ' '],
@@ -40,8 +38,7 @@ def test_is_game_won():
      [' ', ' ', '0', '1', '0', ' ', ' '],
      [' ', ' ', '1', '0', '1', '0', ' '],
      [' ', ' ', '0', '0', '1', '1', ' ']]
-    assert is_game_won(game_grid)[0] == True
-    assert is_game_won(game_grid)[1] == "1"
+    assert is_game_won(game_grid) == True
     game_grid = [['1', '1', '1', '0', '0', '0', '1'],
      ['0', '0', '0', '1', '0', '0', '0'],
      ['0', '1', '1', '0', '1', '1', '1'],
@@ -49,7 +46,7 @@ def test_is_game_won():
      ['1', '0', '1', '0', '0', '0', '1'],
      ['0', '1', '0', '1', '1', '1', '0'],
      ['1', '1', '0', '1', '0', '1', '1']]
-    assert is_game_won(game_grid)[0] == False
+    assert is_game_won(game_grid) == False
 
 
 def test_is_game_over():
