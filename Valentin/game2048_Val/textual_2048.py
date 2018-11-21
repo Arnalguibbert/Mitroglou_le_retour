@@ -11,10 +11,10 @@ from grid_2048 import *
 
 
 def read_player_command():
-    move = input("Entrez votre commande (g (gauche), d (droite), h (haut), b (bas)):")
-    while move not in {"g","d","b","h","exit"}: #on rajoute la commande secrète "exit" pour arrêter
+    move = input("Entrez votre commande (q (gauche), d (droite), z (haut), s (bas)):")
+    while move not in {"q","d","z","s","exit"}: #on rajoute la commande secrète "exit" pour arrêter
         print("la commande n'est pas valide")
-        move = input("Entrez votre commande (g (gauche), d (droite), h (haut), b (bas)):")
+        move = input("Entrez votre commande (q (gauche), d (droite), z (haut), s (bas)):")
     return move
 
 
@@ -125,7 +125,7 @@ def move_grid_left(game_grid):
 def move_grid_right(game_grid):
     res= []
     for ligne in game_grid:
-        res.append(move_row_left(ligne))
+        res.append(move_row_right(ligne))
     return res
 
 def move_grid_up(game_grid):
