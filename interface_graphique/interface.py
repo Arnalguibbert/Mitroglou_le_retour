@@ -54,4 +54,3 @@ def button(order,GRID_LEN, windows_game, game_grid, SIZE,GRID_PADDLE,color_dico,
 def all_button(GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico, dico_command,windows_command,is_game_over,move_possible):# implementation of all of the buttons
     for i in dico_command:# define a button for each command
         button(dico_command[i], GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico,windows_command,is_game_over,move_possible,dico_command)
-
