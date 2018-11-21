@@ -212,8 +212,8 @@ def casetriple(M):
 
 #Dicoassocié
 GRID_LEN = 3
-GRID_PADDLE = 500
-SIZE =  10
+GRID_PADDLE = 5
+SIZE = 500
 color_dico = {0: ["#000000", ''], 1: ["#9cff00", 'X'], 2: ["#ff9000", 'O'], }
 dico_command = {1: [jouer_un_coup00, '', [0, 0]], 2: [jouer_un_coup01, '', [0, 1]], 3: [jouer_un_coup02, '', [0, 2]],
                 4: [jouer_un_coup10, '', [1, 0]], 5: [jouer_un_coup11, '', [1, 1]], 6: [jouer_un_coup12, '', [1, 2]],
