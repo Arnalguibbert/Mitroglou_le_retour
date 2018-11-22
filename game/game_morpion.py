@@ -195,9 +195,9 @@ def tictac_IA_nulle(M):
 def casetriple(M):
     L = []
     for k in range(3):
-        if M[k][1] == M[k][2] == 1 == M[k][0]:
+        if M[k][1] == M[k][2] == M[k][0]:
             return True
-        if M[k][0] == M[k][1] == 1 == M[k][2]:
+        if M[k][0] == M[k][1] == M[k][2]:
             return True
         if M[1][k] == M[2][k] == M[0][k]:
             return True
