@@ -33,11 +33,12 @@ def creation_grid(grid_game, windows, color_dico, GRID_LEN,SIZE,GRID_PADDLE):
 
 
 def button_action(order,GRID_LEN, windows, game_grid, SIZE,GRID_PADDLE,color_dico,is_game_over,move_possible,windows_game,dico_command,windows_command,is_game_won): # action of bouton
-        game_grid=order[0](game_grid)# modify the grid in relation to the order
+
         if not is_game_over(game_grid):
             str_order = str(order[0].__name__)       #here I'm just getting the name of the function
             print(str_order)
             if move_possible(game_grid, str_order):
+                game_grid=order[0](game_grid)# modify the grid in relation to the order
                 creation_grid(game_grid, windows, color_dico, GRID_LEN,SIZE,GRID_PADDLE)# modify the graphique interface
                 print(game_grid)
             else:
