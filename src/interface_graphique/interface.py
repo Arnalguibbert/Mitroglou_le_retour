@@ -61,6 +61,7 @@ def button_action(order,GRID_LEN,windows_game, game_grid, SIZE,GRID_PADDLE,color
                 windows_result.mainloop()
             elif not is_game_over(game_grid):
                 creation_grid(game_grid, windows_game, color_dico, GRID_LEN,SIZE,GRID_PADDLE)# modify the graphique interface
+                all_button(GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico, dico_command,windows_command,is_game_over,move_possible,is_game_won)
             else:
                 windows_command.destroy()
                 windows_result=Tk()
@@ -75,7 +76,6 @@ def button_action(order,GRID_LEN,windows_game, game_grid, SIZE,GRID_PADDLE,color
                 windows_result.mainloop()
         else:
             print("move not possible")
-        all_button(GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico, dico_command,windows_command,is_game_over,move_possible,is_game_won)
 
 def button_action_not_play_again(windows_game,windows_result):
     windows_game.destroy()
@@ -100,3 +100,26 @@ def button_retry(windows_game,windows_result):
     Boutton2=Button(windows_result,text='NO',bg='white',command=lambda windows_game=windows_game,windows_result=windows_result:button_action_not_play_again(windows_game,windows_result))
     Boutton1.pack(side='left',padx=10,pady=10)
     Boutton2.pack(side='left',padx=10,pady=10)
+
+def launch_game():
+    Game=input_of_the_user()
+    List_game=["2048","connect4","demineur","morpion"]
+    if Game in List_game:
+        if Game=="2048":
+            import src.game.game_2048 as g1
+            GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible,is_game_won=g1.info_necessary()
+            launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible,is_game_won)
+        elif Game=="connect4":
+            import src.game.game_connect4 as g2
+            GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible,is_game_won=g2.info_necessary()
+            launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible,is_game_won)
+        elif Game=="demineur":
+            import src.game.game_demineur as g3
+            GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible,is_game_won=g3.info_necessary()
+            launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible,is_game_won)
+        elif Game=="morpion":
+            import src.game.game_morpion as g4
+            GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible,is_game_won=g4.info_necessary()
+            launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible,is_game_won)
+    else:
+        launch_game()

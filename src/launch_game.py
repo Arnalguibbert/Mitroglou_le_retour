@@ -26,3 +26,4 @@ def launch_game():
         launch_game()
 
 launch_game()
+
