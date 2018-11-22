@@ -20,7 +20,7 @@ def is_game_won(M):
     m=0
     for k in range(3):
         for i in range (3):
-            if M[i][k] < 8:
+            if M[i][k] <= 8:
                 m+=1
     return m == 0
 
