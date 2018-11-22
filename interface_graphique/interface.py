@@ -19,6 +19,15 @@ def input_of_the_user():
     Input.pack(padx=10,pady=10)
     Boutton=Button(windows,text='ok',command=windows.destroy)
     Boutton.pack(padx=10,pady=10)
+    Proposal=Label(windows,text='choose a game among theses')
+    Proposal.pack(padx=10,pady=10)
+    Frame_game=Frame(windows)
+    Frame_game.pack(padx=10,pady=10)
+    List_game=[["2048","connect4"],["demineur","morpion"]]
+    for i in range(2):
+        for j in range(2):
+            cell=Frame(Frame_game, bg='white', width=100, height=50).grid(row=i, column=j, padx=4, pady=4)# creation of the cell
+            Label(Frame_game,text=List_game[i][j],bg='white').grid(row=i,column=j)
     windows.mainloop()
     return R.get()
 
@@ -32,30 +41,36 @@ def creation_grid(grid_game, windows, color_dico, GRID_LEN,SIZE,GRID_PADDLE):
 
 
 
-def button_action(order,GRID_LEN, windows, game_grid, SIZE,GRID_PADDLE,color_dico,is_game_over,move_possible,windows_game,dico_command,windows_command,is_game_won): # action of bouton
+def button_action(order,GRID_LEN,windows_game, game_grid, SIZE,GRID_PADDLE,color_dico,is_game_over,move_possible,dico_command,windows_command,is_game_won): # action of bouton
         str_order = str(order[0].__name__)
         if move_possible(game_grid, str_order):
             game_grid=order[0](game_grid)# modify the grid in relation to the order
             if is_game_won(game_grid):
-                creation_grid(game_grid, windows, color_dico, GRID_LEN,SIZE,GRID_PADDLE)
-                cell=Frame(windows, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=0, padx=GRID_PADDLE, pady=GRID_PADDLE)
-                Label(cell,text='YOU',bg='blue').grid(row=0,column=0)
-                cell2=Frame(windows, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=1, padx=GRID_PADDLE, pady=GRID_PADDLE)
-                Label(cell2,text='WON',bg='blue').grid(row=0,column=1)
+                windows_command.destroy()
+                creation_grid(game_grid, windows_game, color_dico, GRID_LEN,SIZE,GRID_PADDLE)
+                windows_result=Tk()
+                cell=Frame(windows_result, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=0, padx=GRID_PADDLE, pady=GRID_PADDLE)
+                Label(windows_result,text='GAME',bg='blue').grid(row=0,column=0)
+                cell2=Frame(windows_result, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=1, padx=GRID_PADDLE, pady=GRID_PADDLE)
+                Label(windows_result,text='WON',bg='blue').grid(row=0,column=1)
+                windows_result.mainloop()
             elif not is_game_over(game_grid):
-                creation_grid(game_grid, windows, color_dico, GRID_LEN,SIZE,GRID_PADDLE)# modify the graphique interface
+                creation_grid(game_grid, windows_game, color_dico, GRID_LEN,SIZE,GRID_PADDLE)# modify the graphique interface
             else:
-                cell=Frame(windows, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=0, padx=GRID_PADDLE, pady=GRID_PADDLE)
-                Label(cell,text='YOU',bg='blue').grid(row=0,column=0)
-                cell2=Frame(windows, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=1, padx=GRID_PADDLE, pady=GRID_PADDLE)
-                Label(cell2,text='LOSE',bg='blue').grid(row=0,column=1)
+                windows_command.destroy()
+                windows_result=Tk()
+                cell=Frame(windows_result, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=0, padx=GRID_PADDLE, pady=GRID_PADDLE)
+                Label(windows_result,text='YOU',bg='blue').grid(row=0,column=0)
+                cell2=Frame(windows_result, bg='blue', width=SIZE / GRID_LEN, height=SIZE / GRID_LEN).grid(row=0, column=1, padx=GRID_PADDLE, pady=GRID_PADDLE)
+                Label(windows_result,text='LOSE',bg='blue').grid(row=0,column=1)
+                windows_result.mainloop()
         else:
             print('move not possible')
         all_button(GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico, dico_command,windows_command,is_game_over,move_possible,is_game_won)
 
 
 def button(order,GRID_LEN, windows_game, game_grid, SIZE,GRID_PADDLE,color_dico,windows_command,is_game_over,move_possible,dico_command,is_game_won):# implementation of a button
-    Boutton=Button(windows_command,text=order[1],bg='#eee4da',width=5,height=2,command=lambda order=order,GRID_LEN=GRID_LEN,windows=windows_game, game_grid=game_grid, SIZE=SIZE,GRID_PADDLE=GRID_PADDLE,color_dico=color_dico,is_game_over=is_game_over,move_possible=move_possible,windows_command=windows_command,dico_command=dico_command,is_game_won=is_game_won:button_action(order,GRID_LEN, windows, game_grid, SIZE,GRID_PADDLE,color_dico,is_game_over,move_possible,windows_game,dico_command,windows_command,is_game_won)).grid(row=order[2][0],column=order[2][1],padx=3,pady=3)
+    Boutton=Button(windows_command,text=order[1],bg='#eee4da',width=5,height=2,command=lambda order=order,GRID_LEN=GRID_LEN,windows_game=windows_game, game_grid=game_grid, SIZE=SIZE,GRID_PADDLE=GRID_PADDLE,color_dico=color_dico,is_game_over=is_game_over,move_possible=move_possible,windows_command=windows_command,dico_command=dico_command,is_game_won=is_game_won:button_action(order,GRID_LEN, windows_game, game_grid, SIZE,GRID_PADDLE,color_dico,is_game_over,move_possible,dico_command,windows_command,is_game_won)).grid(row=order[2][0],column=order[2][1],padx=3,pady=3)
 
 
 def all_button(GRID_LEN, windows_game, game_grid, SIZE, GRID_PADDLE, color_dico, dico_command,windows_command,is_game_over,move_possible,is_game_won):# implementation of all of the buttons
