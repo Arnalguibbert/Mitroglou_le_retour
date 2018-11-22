@@ -1,6 +1,9 @@
 from tkinter import *
 from interface_graphique.interface import *
 from game.game_2048 import *
+import random as rd
+
+
 def launch_game():
     Game=input_of_the_user()
     List_game=["2048","connect4","demineur","morpion"]
