@@ -15,6 +15,7 @@ import IA_7
 import IA_8
 
 from grid_puissance4 import *
+
 from fin_jeu_puissance4 import *
 import time
 import random
@@ -49,13 +50,27 @@ def get_globale_position(nom_IA,game_grid,num_joueur):
     elif nom_IA == "8":
         return IA_8.get_position(game_grid,num_joueur)
 
+def display_grid(game_grid):
+    size = len(game_grid)
+    string = ""
+    for ordo in range(size):
+        string += "\n"
+        string += (" " + "=" * 3)*size
+        string += "\n"
+        for absi in range(size):
+            string += "|"+str(game_grid[ordo][absi]).center(3) #On crée les délimiters de case et la case sera une string contenant la valeur au centre de taille 3
+        string += "|"
+    string += "\n"
+    string += (" " + "=" * 3)*size
+    return string
+
 
 def duel(machine_1,machine_2):
     #prend en argument un string entre "1" et "8"
     print("Duel",machine_1,"vs",machine_2,":")
     size = 7
     game_grid = init_game(size)
-    print(game_grid)
+    print(display_grid(game_grid))
     print()
     num_joueur = str(random.randrange(0,2)) #numéro du joueur actif (au hasard au début)
     while (not is_game_won(game_grid)) and (not is_game_over(game_grid)):
@@ -65,13 +80,14 @@ def duel(machine_1,machine_2):
             nom_IA = machine_2
         position = get_globale_position(nom_IA,game_grid,num_joueur)
         game_grid = update_grid(game_grid,position,num_joueur)
-        #time.sleep(0.3)
-        print(game_grid)
+        time.sleep(0.3) #on attend un peu pour avoir le emps de suivre
+        print(display_grid(game_grid))
         print()
         num_joueur = str(1-int(num_joueur)) #on change le joueur actif
     #si il y a eu une victoire, num_joueur est le numéro du joueur PERDANT et nom_IA est le nom du joueur GAGNANT
     if is_game_won(game_grid):
         print("L'IA",nom_IA,"a gagné !")
+        #pause plus longue en fin de duel
         if num_joueur == "1": #ici le premier joueur à gagner
             return 1 #on fait un calcul de score en fonction de qui gagne, il est positif ssi le premier joueur (dans l'ordre des arguments) gagne
         else:
@@ -84,7 +100,7 @@ def tournoi_puissance4():
     victorieux = []
     for joueur1 in range(1,9,2):
         score_duel = 0
-        for i in range(0,9):
+        for i in range(0,5):
             score_duel += duel(str(joueur1),str(joueur1+1)) # joueur1+1 c'est l'int qui correspond au joueur 2
         while score_duel == 0:
             score_duel += duel(str(joueur1),str(joueur1+1))
@@ -98,7 +114,7 @@ def tournoi_puissance4():
     finalistes = []
     score_duel = 0
     for indice_joueur1 in [0,2]:
-        for i in range(0,9):
+        for i in range(0,5):
             score_duel += duel(victorieux[indice_joueur1],victorieux[indice_joueur1+1])
         while score_duel == 0:
             score_duel += duel(victorieux[indice_joueur1],victorieux[indice_joueur1+1])
@@ -110,7 +126,7 @@ def tournoi_puissance4():
             print("Le gagnant de cette demi-finale est",victorieux[indice_joueur1+1])
             finalistes.append(victorieux[indice_joueur1+1])
     print("Finale !")
-    for i in range(0,9):
+    for i in range(0,5):
         score_duel += duel(finalistes[0],finalistes[1])
     while score_duel == 0:
         score_duel += duel(finalistes[0],finalistes[1])
@@ -127,7 +143,7 @@ def duel_vs_machine():
     size = 7
     nom_IA = "3"
     game_grid = init_game(size)
-    print(game_grid)
+    print(display_grid(game_grid))
     print()
     num_joueur = str(random.randrange(0,2)) #numéro du joueur actif (au hasard au début)
     while (not is_game_won(game_grid)) and (not is_game_over(game_grid)):
@@ -146,7 +162,7 @@ def duel_vs_machine():
             position = get_globale_position(nom_IA,game_grid,num_joueur)
             
         game_grid = update_grid(game_grid,position,num_joueur)
-        print(game_grid)
+        print(display_grid(game_grid))
         print()
         num_joueur = str(1-int(num_joueur)) #on change le joueur actif
     #si il y a eu une victoire, num_joueur est le numéro du joueur PERDANT et nom_IA est le nom du joueur GAGNANT
