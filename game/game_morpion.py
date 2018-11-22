@@ -12,7 +12,7 @@ def init_game(n=3):
 
 
 def jouer_un_coup(a,b,M):
-    return(tictac_IA_nulle(M))
+    return(tictac_IA_forte(a,b,M))
 
 
 def is_game_over(M):
@@ -193,23 +193,27 @@ def tictac_IA_nulle(M):
 #victoire
 
 def casetriple(M):
+
+
+
     for k in range(3):
-        if M[k][1] == M[k][2] == M[k][0]:
+
+        if M[k][1] == M[k][2] == M[k][0] and M[k][0] != 0 :
             return True
-        if M[k][0] == M[k][1] == M[k][2]:
+        if M[k][0] == M[k][1] == M[k][2] and M[k][0] != 0 :
             return True
-        if M[1][k] == M[2][k] == M[0][k]:
+        if M[1][k] == M[2][k] == M[0][k] and M[0][k] != 0 :
             return True
-        if M[1][k] == M[0][k] == M[2][k]:
+        if M[1][k] == M[0][k] == M[2][k] and M[0][k] != 0 :
             return True
-        if M[k][0] == M[k][2] == M[k][1]:
+        if M[k][0] == M[k][2] == M[k][1] and M[k][0] != 0 :
             return True
-        if M[0][k] == M[2][k] == M[1][k]:
+        if M[0][k] == M[2][k] == M[1][k] and M[0][k] != 0 :
             return True
 
-    if M[0][0] == M[1][1] == M[2][2]:
+    if M[0][0] == M[1][1] == M[2][2] and M[1][1] != 0 :
         return True
-    if M[0][2] == M[1][1] == M[2][0]:
+    if M[0][2] == M[1][1] == M[2][0] and M[1][1] != 0 :
         return True
 
     return False
