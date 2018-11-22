@@ -7,7 +7,7 @@ Created on Wed Nov 21 15:19:39 2018
 
 
 import copy
-import random
+import random as rd
 import time
 
 
