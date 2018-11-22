@@ -12,7 +12,7 @@ def init_game(n=3):
 
 
 def jouer_un_coup(a,b,M):
-    return(tictac_IA_nulle(M))
+    return(tictac_IA_forte(a,b,M))
 
 
 def is_game_over(M):
