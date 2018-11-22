@@ -28,6 +28,3 @@ def get_position(game_grid,num_joueur):
         if move_possible(game_grid,str(position)):
             return position #on prend des commandes aléatoires jusqu'à avoir une commande valide. Cela nécessite que la grille ne soit pas pleine
 
-        
-    
-    
