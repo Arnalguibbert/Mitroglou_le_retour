@@ -1,3 +1,6 @@
+import random as rd
+
+
 #FONCTIONS VITALES:
 
 def move_possible(M,r):
@@ -9,7 +12,7 @@ def init_game(n=3):
 
 
 def jouer_un_coup(a,b,M):
-    return(tictac_IA_nulle(a,b,M))
+    return(tictac_IA_nulle(M))
 
 
 def is_game_over(M):
@@ -174,24 +177,26 @@ def tictac_IA_forte(a, b, M):
 
 #IA aléatoire
 
-def tictac_IA_nulle(a, b, M):
+def tictac_IA_nulle(M):
+    dict_possible = []
+    for i in range(GRID_LEN):
+        for j in range(GRID_LEN):
+            if M[i][j] == 0:
+                dict_possible += [i,j]
+    coords = rd.choice(dict_possible)
 
-    if M[a][b] == 1 or M[a][b] == 2:
-        return ("gros naze")
 
-    M[a][b] = 1
 
-    return test_aléa(M)
+
 
 
 #victoire
 
 def casetriple(M):
-    L = []
     for k in range(3):
-        if M[k][1] == M[k][2] == 1 == M[k][0]:
+        if M[k][1] == M[k][2] == M[k][0]:
             return True
-        if M[k][0] == M[k][1] == 1 == M[k][2]:
+        if M[k][0] == M[k][1] == M[k][2]:
             return True
         if M[1][k] == M[2][k] == M[0][k]:
             return True

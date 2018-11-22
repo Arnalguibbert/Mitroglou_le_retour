@@ -1,4 +1,11 @@
+# Pycharm
 .idea/
 
+# Cache
 __pycache__/
 htmlcov/
+
+# Cache
+.pytest_cache/
+**/__pycache__/
+

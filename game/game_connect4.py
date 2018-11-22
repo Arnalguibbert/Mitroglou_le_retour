@@ -22,6 +22,7 @@ def init_game(size): # la grille sera carrée
 
 def move_possible(game_grid,str_position):
     # Dit si la colonne à la position donnée peut acceuillir un jeton. La commande est une string
+    str_position = str_position.replace('update_grid_','')
     return game_grid[0][int(str_position)] == " "
 
 
