@@ -32,6 +32,8 @@ dico_command = {"0": [update_grid_0,"0",[0,0]], "1": [update_grid_1,"1",[1,0]], 
 def info_necessary():
     return GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible,is_game_won
 
+
+
 def get_globale_position(nom_IA,game_grid,num_joueur):
     if nom_IA == "1":
         return IA_1.get_position(game_grid,num_joueur)
@@ -50,6 +52,8 @@ def get_globale_position(nom_IA,game_grid,num_joueur):
     elif nom_IA == "8":
         return IA_8.get_position(game_grid,num_joueur)
 
+
+
 def display_grid(game_grid):
     size = len(game_grid)
     string = ""
@@ -65,8 +69,10 @@ def display_grid(game_grid):
     return string
 
 
+
 def duel(machine_1,machine_2):
-    #prend en argument un string entre "1" et "8"
+    #prend en argument un couple de string entre "1" et "8"
+    time.sleep(3) #on attend plus longtemps pour la fin (ou début) d'un duel
     print("Duel",machine_1,"vs",machine_2,":")
     size = 7
     game_grid = init_game(size)
@@ -81,6 +87,7 @@ def duel(machine_1,machine_2):
         position = get_globale_position(nom_IA,game_grid,num_joueur)
         game_grid = update_grid(game_grid,position,num_joueur)
         time.sleep(0.3) #on attend un peu pour avoir le emps de suivre
+        print(machine_1,"(0) vs",machine_2,"(1)")
         print(display_grid(game_grid))
         print()
         num_joueur = str(1-int(num_joueur)) #on change le joueur actif
@@ -96,9 +103,10 @@ def duel(machine_1,machine_2):
     return 0
 
 
+
 def tournoi_puissance4():
-    victorieux = []
-    for joueur1 in range(1,9,2):
+    victorieux = [] #liste qui va recevoir les gagnants du premier tour
+    for joueur1 in range(1,9,2): #indice 
         score_duel = 0
         for i in range(0,5):
             score_duel += duel(str(joueur1),str(joueur1+1)) # joueur1+1 c'est l'int qui correspond au joueur 2
@@ -135,7 +143,8 @@ def tournoi_puissance4():
     else:
         print("Le gagnant de ce tournoi est le numéro",finalistes[1],"!")
         print("Bravo !")
-    
+
+
             
 def duel_vs_machine():
     """joue contre terminator !"""

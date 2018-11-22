@@ -267,7 +267,7 @@ def update_grid_6(game_grid):
 color_dico = {" ":['#8c8c88',"","rond"],"0":['#fcff00',"","rond"],"1":['#e70808',"","rond"]}
 
 
-SIZE = 200
+SIZE = 300
 GRID_PADDLE = 4
 GRID_LEN = 7
 
