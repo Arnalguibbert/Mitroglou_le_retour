@@ -22,6 +22,7 @@ def init_game(size): # la grille sera carrée
 
 def move_possible(game_grid,str_position):
     # Dit si la colonne à la position donnée peut acceuillir un jeton. La commande est une string
+    str_position = str_position.replace('update_grid_','')
     return game_grid[0][int(str_position)] == " "
 
 
@@ -136,34 +137,17 @@ def is_game_won(game_grid):
     bool_list = [allignement_ligne(game_grid),allignement_colonne(game_grid),allignement_diago(game_grid),allignement_antidiago(game_grid)] #contient des -1 et éventuellement une ou plusieurs fois le numéro du gagnant
     return bool_list != [False]*4
 
-
-
+        
 def get_position(game_grid,num_joueur):
-    for position in range(0,len(game_grid)): #on regarde si on peut gagner
-        if move_possible(game_grid,str(position)) and is_game_won(update_grid(game_grid,position,num_joueur)): #même remarque
-            return position
-    for position in range(0,len(game_grid)): #on doit empêcher le joueur adverse de gagner tout de suite
-        if move_possible(game_grid,str(position)) and is_game_won(update_grid(game_grid,position,str(1-int(num_joueur)))): #idem
-            return position
-    tests = 0 #nombre de tentatives pour proposer un coup
-    mauvais_coup = True #juste pour pouvoir passer la boucle
-    while tests < 100 and mauvais_coup:
-        tests += 1
-        position = rd.randrange(0,len(game_grid)) #on choisit une position au hasard
-        if move_possible(game_grid,str(position)): #on regarde si on a un coup possible
-            mauvais_coup = False
-            nouvelle_grille = update_grid(game_grid,position,num_joueur)
-            for position2 in range(0,len(game_grid)): #on regarde si l'adversaire peut gagner après avoir jouer le coup
-                if move_possible(nouvelle_grille,str(position2)) and is_game_won(update_grid(nouvelle_grille,position2,str(1-int(num_joueur)))):
-                    mauvais_coup = True
-            if mauvais_coup == False:
-                return position #si c'est pas un mauvais coup au sens de "l'adversaire ne gagne pas juste après, on y va"
+    # le num du joueur doit être "0" ou "1"
+    size = len(game_grid)
     commande_valide = False
     while not commande_valide:
-        position = rd.randrange(0,len(game_grid))
+        position = rd.randrange(0,size)
         if move_possible(game_grid,str(position)):
             return position #on prend des commandes aléatoires jusqu'à avoir une commande valide. Cela nécessite que la grille ne soit pas pleine
 
+  
 
 def duel_vs_machine():
     """joue contre terminator !"""
@@ -172,7 +156,7 @@ def duel_vs_machine():
     game_grid = init_game(size)
     print(game_grid)
     print()
-    num_joueur = str(random.randrange(0,2)) #numéro du joueur actif (au hasard au début)
+    num_joueur = str(rd.randrange(0,2)) #numéro du joueur actif (au hasard au début)
     while (not is_game_won(game_grid)) and (not is_game_over(game_grid)):
         
         if num_joueur == "0":
@@ -271,7 +255,7 @@ SIZE = 200
 GRID_PADDLE = 4
 GRID_LEN = 7
 
-dico_command = {"0": [update_grid_0,"0",[0,0]], "1": [update_grid_1,"1",[1,0]], "2": [update_grid_2,"2",[2,0]], "3": [update_grid_3,"3",[3,0]], "4": [update_grid_4,"4",[4,0]], "5": [update_grid_5,"5",[5,0]], "6": [update_grid_6,"6",[6,0]]}
+dico_command = {"0": [update_grid_0,"0",[0,0]], "1": [update_grid_1,"1",[0,1]], "2": [update_grid_2,"2",[0,2]], "3": [update_grid_3,"3",[0,3]], "4": [update_grid_4,"4",[0,4]], "5": [update_grid_5,"5",[0,5]], "6": [update_grid_6,"6",[0,6]]}
 
 
 def info_necessary():
