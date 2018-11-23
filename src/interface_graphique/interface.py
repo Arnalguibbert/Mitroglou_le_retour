@@ -25,9 +25,9 @@ def input_of_the_user():#get the choice of the user
     Proposal.pack(padx=10,pady=10)
     Frame_game=Frame(windows)
     Frame_game.pack(padx=10,pady=10)
-    List_game=[["2048","connect4"],["demineur","morpion"]]
+    List_game=[["2048","connect4","other game"],["minesweeper","tic-tac-toe","puzzle"]]
     for i in range(2):
-        for j in range(2):
+        for j in range(3):
             cell=Frame(Frame_game, bg='white', width=100, height=50).grid(row=i, column=j, padx=4, pady=4)# creation of the cell
             Label(Frame_game,text=List_game[i][j],bg='white').grid(row=i,column=j)# spot the different games in the choice interface
     windows.mainloop()# print the choice interface
@@ -103,7 +103,7 @@ def button_retry(windows_game,windows_result):# implementation of the different 
 
 def launch_game():#launch the interface
     Game=input_of_the_user()#get the choice of the user
-    List_game=["2048","connect4","demineur","morpion","puzzle"]
+    List_game=["2048","connect4","minesweeper","tic-tac-toe","puzzle"]
     if Game in List_game:# choose among the different choices
         if Game=="2048":
             import src.game.game_2048 as g1
@@ -113,11 +113,11 @@ def launch_game():#launch the interface
             import src.game.game_connect4 as g2
             GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible,is_game_won=g2.info_necessary()
             launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible,is_game_won)
-        elif Game=="demineur":
-            import src.game.game_demineur as g3
+        elif Game=="minesweeper":
+            import src.game.game_demineur55 as g3
             GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible,is_game_won=g3.info_necessary()
             launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible,is_game_won)
-        elif Game=="morpion":
+        elif Game=="tic-tac-toe":
             import src.game.game_morpion as g4
             GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible,is_game_won=g4.info_necessary()
             launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible,is_game_won)
