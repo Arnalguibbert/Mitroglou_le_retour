@@ -157,10 +157,19 @@ def test_aléa(M):
 #IA effective
 
 def tictac_IA_forte(a, b, M):
+
+
     if M[a][b] == 1 or M[a][b] == 2:
         return ("gros naze")
 
     M[a][b] = 1
+
+
+    if is_game_won(M):
+        return M
+
+    if is_game_over(M):
+        return M
 
     if somme(M) == 1:
         return test_premier(M)
