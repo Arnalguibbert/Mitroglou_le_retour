@@ -149,7 +149,7 @@ def test_premier(M):
 def test_aléa(M):
     for k in range(3):
         for i in range(3):
-            if M[k][i] != 1:
+            if M[k][i] == 0:
                 M[k][i] = 2
                 return M
 
