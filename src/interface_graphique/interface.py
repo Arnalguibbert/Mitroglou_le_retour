@@ -103,7 +103,7 @@ def button_retry(windows_game,windows_result):# implementation of the different 
 
 def launch_game():#launch the interface
     Game=input_of_the_user()#get the choice of the user
-    List_game=["2048","connect4","demineur","morpion"]
+    List_game=["2048","connect4","demineur","morpion","puzzle"]
     if Game in List_game:# choose among the different choices
         if Game=="2048":
             import src.game.game_2048 as g1
@@ -120,6 +120,10 @@ def launch_game():#launch the interface
         elif Game=="morpion":
             import src.game.game_morpion as g4
             GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible,is_game_won=g4.info_necessary()
+            launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible,is_game_won)
+        elif Game=="puzzle":
+            import src.game.game_puzzle as g5
+            GRID_LEN,GRID_PADDLE,dico_command,color_dico,SIZE,init_game,is_game_over,move_possible,is_game_won=g5.info_necessary()
             launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible,is_game_won)
     else:
         launch_game()

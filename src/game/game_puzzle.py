@@ -59,7 +59,7 @@ def move_possible(game_grid,command):
         return "*" not in [game_grid[0][2],game_grid[1][2],game_grid[2][2]]
 
 
-def init_game():
+def init_game(GRID_LEN):#fictive arg
     """
     Renvoie une grille résolvable pour commencer le jeu
     """
@@ -90,7 +90,7 @@ def is_game_over(game_grid):
     return False
 
 
-color_dico = {"*":['#ffffffff',"","carre"],"0":['#add8e6',"0","carre"],"1":['#add8e6',"1","carre"],"2":['#add8e6',"2","carre"],"3":['#add8e6',"3","carre"],"4":['#add8e6',"4","carre"],"5":['#add8e6',"5","carre"],"6":['#add8e6',"6","carre"],"7":['#add8e6',"7","carre"],"8":['#add8e6',"8","carre"]}
+color_dico = {"*":['#ffffff',"","carre"],"0":['#add8e6',"0","carre"],"1":['#add8e6',"1","carre"],"2":['#add8e6',"2","carre"],"3":['#add8e6',"3","carre"],"4":['#add8e6',"4","carre"],"5":['#add8e6',"5","carre"],"6":['#add8e6',"6","carre"],"7":['#add8e6',"7","carre"],"8":['#add8e6',"8","carre"]}
 
 
 SIZE = 300
