@@ -59,7 +59,7 @@ def move_possible(game_grid,command):
         return "*" not in [game_grid[0][2],game_grid[1][2],game_grid[2][2]]
 
 
-def init_game():
+def init_game(GRID_LEN): #fictive arg
     """
     Renvoie une grille résolvable pour commencer le jeu
     """
@@ -97,7 +97,7 @@ SIZE = 300
 GRID_PADDLE = 4
 GRID_LEN = 3
 
-dico_command = {"up": [update_grid_up,"up",[0,2]], "down": [update_grid_down,"down",[2,2]], "left": [update_grid_left,"left",[1,0]], "right": [update_grid_right,"right",[1,2]]}
+dico_command = {"up": [update_grid_up,"up",[0,1]], "down": [update_grid_down,"down",[2,1]], "left": [update_grid_left,"left",[1,0]], "right": [update_grid_right,"right",[1,2]]}
 
 
 def info_necessary():
