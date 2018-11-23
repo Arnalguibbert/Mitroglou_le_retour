@@ -53,7 +53,7 @@ def move_possible(game_grid,command):
         return "*" not in game_grid[0]
     elif command == "update_grid_down":
         return "*" not in game_grid[2]
-    elif command == "upgrade_grid_left":
+    elif command == "update_grid_left":
         return "*" not in [game_grid[0][0],game_grid[1][0],game_grid[2][0]]
     elif command == "update_grid_right":
         return "*" not in [game_grid[0][2],game_grid[1][2],game_grid[2][2]]
@@ -67,16 +67,16 @@ def init_game(GRID_LEN): #fictive arg
     game_grid = [["1","2","3"],["4","5","6"],["7","8","*"]]
     last_mouvement = "nothing" #enregistre le dernier mouvement qu'on a fait
     for k in range(0,30): #on fait 20 mouvements aléatoires en évitant de faire 2 fois le même
-        mouvement = rd.choice(["update_grid_up","update_grid_down","upgrade_grid_left","update_grid_right"])
+        mouvement = rd.choice(["update_grid_up","update_grid_down","update_grid_left","update_grid_right"])
         while mouvement == last_mouvement and move_possible(game_grid,mouvement): #il y a toujours une possibilité car il y a toujours 2 mouvements possibles au min
-            mouvement = rd.choice(["update_grid_up","update_grid_down","upgrade_grid_left","update_grid_right"])
+            mouvement = rd.choice(["update_grid_up","update_grid_down","update_grid_left","update_grid_right"])
         last_mouvement = mouvement
         #une fois qu'on a le mouvement on met à jour la grille
         if mouvement == "update_grid_up":
             game_grid = update_grid_up(game_grid)
         elif mouvement == "update_grid_down":
             game_grid = update_grid_down(game_grid)
-        elif mouvement == "upgrade_grid_left":
+        elif mouvement == "update_grid_left":
             game_grid = update_grid_left(game_grid)
         elif mouvement == "update_grid_right":
             game_grid = update_grid_right(game_grid)
