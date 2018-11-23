@@ -127,3 +127,4 @@ def launch_game():#launch the interface
             launch_a_game(GRID_LEN,init_game,color_dico,GRID_PADDLE,SIZE,dico_command,is_game_over,move_possible,is_game_won)
     else:
         launch_game()
+
