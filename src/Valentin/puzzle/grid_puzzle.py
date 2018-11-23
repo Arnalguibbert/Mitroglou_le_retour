@@ -14,7 +14,7 @@ def update_grid_up(game_grid):
         for absi in range(0,3):
             if game_grid[ordo][absi] == "*":
                 game_grid[ordo][absi], game_grid[ordo-1][absi] = game_grid[ordo-1][absi], game_grid[ordo][absi]
-    return game_grid
+                return game_grid
 
 
 
@@ -24,7 +24,7 @@ def update_grid_down(game_grid):
         for absi in range(0,3):
             if game_grid[ordo][absi] == "*":
                 game_grid[ordo][absi], game_grid[ordo+1][absi] = game_grid[ordo+1][absi], game_grid[ordo][absi]
-    return game_grid
+                return game_grid
 
 
 
@@ -34,7 +34,7 @@ def update_grid_left(game_grid):
         for ordo in range(0,3):
             if game_grid[ordo][absi] == "*":
                 game_grid[ordo][absi], game_grid[ordo][absi-1] = game_grid[ordo][absi-1], game_grid[ordo][absi]
-    return game_grid
+                return game_grid
 
 
 
@@ -44,7 +44,7 @@ def update_grid_right(game_grid):
         for ordo in range(0,3):
             if game_grid[ordo][absi] == "*":
                 game_grid[ordo][absi], game_grid[ordo][absi+1] = game_grid[ordo][absi+1], game_grid[ordo][absi]
-    return game_grid
+                return game_grid
 
 
 
