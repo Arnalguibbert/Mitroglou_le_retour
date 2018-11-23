@@ -68,7 +68,7 @@ def init_game(GRID_LEN): #fictive arg
     last_mouvement = "nothing" #enregistre le dernier mouvement qu'on a fait
     for k in range(0,30): #on fait 20 mouvements aléatoires en évitant de faire 2 fois le même
         mouvement = rd.choice(["update_grid_up","update_grid_down","update_grid_left","update_grid_right"])
-        while mouvement == last_mouvement and move_possible(game_grid,mouvement): #il y a toujours une possibilité car il y a toujours 2 mouvements possibles au min
+        while mouvement == last_mouvement and not move_possible(game_grid,mouvement): #il y a toujours une possibilité car il y a toujours 2 mouvements possibles au min
             mouvement = rd.choice(["update_grid_up","update_grid_down","update_grid_left","update_grid_right"])
         last_mouvement = mouvement
         #une fois qu'on a le mouvement on met à jour la grille
